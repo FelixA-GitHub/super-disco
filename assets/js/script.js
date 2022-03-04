@@ -1,37 +1,55 @@
-// var headerDateEl = document.querySelector('.jumbotron');
-// var todayEl = document.querySelector('#currentDay');
-// const moment = require('moment');
+var headerDateEl = document.querySelector('.jumbotron');
+var todayEl = document.querySelector('#currentDay');
+var tasks = {
+    "9": [],
+    "10": [],
+    "11": [],
+    "12": [],
+    "13": [],
+    "14": [],
+    "15": [],
+    "16": [],
+    "17": []
+};
 
-// getTodayDate = function() {
+
+getTodayDate = function() {
+    //variable to store the date format preference
+    let todayFormatEl = moment().format('dddd, MMMM Do');
+    // variable to create p element to store the date
+    var date = document.createElement("p");
+    //displays todayFormatEl as viewable text
+    date.textContent = todayFormatEl;
+    //appends date format preference to current day id in html
+    todayEl.append(todayFormatEl);
+    //appends above to the header section of the html, where we wanted to see it
+    headerDateEl.append(todayEl);
+
+};
+getTodayDate();
+
+timeCheck = function() {
+    //variable to store current hour
+    let hourCurrent = moment().hour();
+
+    for (var i = 0; i < tasks.length; i++) {
+        var hourEl = tasks[i];
+        console.log(hourEl[i]);
+    }
     
-//     let todayFormatEl = moment().format('dddd, MMMM Do');
-//     var date = document.createElement("span");
-//     date.textContent = todayFormatEl;
-    
-//     todayEl.append(todayFormatEl);
-//     headerDateEl.append(todayEl);
+    // $(".task-info").each( function() {
+    //     var hourEl = parseInt($(this).attr("id"));
 
-// };
-// getTodayDate();
+    //     // checks for past, present, and future
+    //     if ( hourEl < hourCurrent ) {
+    //         $(this).removeClass(["present", "future"]).addClass("past");
+    //     }
+    //     else if ( hourEl === hourCurrent ) {
+    //         $(this).removeClass(["past", "future"]).addClass("present");
+    //     }
+    //     else {
+    //         $(this).removeClass(["past", "present"]).addClass("future");
+    //     }
+    // })
 
-// let d = new Date();
-// let options = {
-//     weekday: 'long', 
-//     month: 'long',
-//     day: 'numeric'
-// };
-
-// console.log(Date.toLocaleTimeString('en-us', options));
-
-// var curday = function(sp){
-//     today = new Date();
-//     var dd = today.getDate();
-//     var mm = today.getMonth()+1; //As January is 0.
-//     var yyyy = today.getFullYear();
-    
-//     if(dd<10) dd='0'+dd;
-//     if(mm<10) mm='0'+mm;
-//     return (mm+sp+dd+sp+yyyy);
-//     };
-//     console.log(curday('/'));
-//     console.log(curday('-'));
+};
