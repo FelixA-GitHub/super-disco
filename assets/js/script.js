@@ -29,27 +29,38 @@ getTodayDate = function() {
 getTodayDate();
 
 timeCheck = function() {
-    //variable to store current hour
-    let hourCurrent = moment().hour();
+    const rows = document.getElementsByClassName("row");
+    let currentHour = parseInt(moment().format('H'));
 
-    for (var i = 0; i < tasks.length; i++) {
-        var hourEl = tasks[i];
-        console.log(hourEl[i]);
-    }
-    
-    // $(".task-info").each( function() {
-    //     var hourEl = parseInt($(this).attr("id"));
-
-    //     // checks for past, present, and future
-    //     if ( hourEl < hourCurrent ) {
-    //         $(this).removeClass(["present", "future"]).addClass("past");
-    //     }
-    //     else if ( hourEl === hourCurrent ) {
-    //         $(this).removeClass(["past", "future"]).addClass("present");
-    //     }
-    //     else {
-    //         $(this).removeClass(["past", "present"]).addClass("future");
-    //     }
-    // })
+    Array.from(rows).forEach(row => {
+        let
+          rowIdString = row.id,
+          rowHour;
+        if (rowIdString) {
+          rowHour = parseInt(rowIdString);
+        }
+        if (rowHour) {
+          // compares the row id to current hour and sets color accordingly
+          if (currentHour === rowHour) {
+            setColor(row, "red");
+          } else if ((currentHour < rowHour) && (currentHour > rowHour - 6)) {
+            setColor(row, "limegreen");
+          } else if ((currentHour > rowHour) && (currentHour < rowHour + 6)) {
+            setColor(row, "lightgrey");
+          } else {
+            setColor(row, "limegreen");
+          }
+        }
+    });
 
 };
+
+timeCheck();
+
+//function to set color time block
+function setColor(element, color) {
+    element.style.backgroundColor = color;
+}
+
+
+  

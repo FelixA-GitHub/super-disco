@@ -32,8 +32,11 @@ textarea{
 
 .row {
   white-space: pre-wrap;
-  height: 80px;
-  border-top: 1px solid white;;
+  height: 100px;
+  margin-bottom: 0.4em;
+  border-left: 1px solid black;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .hour {
@@ -71,6 +74,3 @@ textarea{
   transition: all .3s ease-in-out;
 }
 
-.task {
-  background-color: lightgrey;
-}
