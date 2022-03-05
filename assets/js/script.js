@@ -4,27 +4,26 @@ var todayEl = document.querySelector('#currentDay');
 const rows = document.getElementsByClassName("row");
 let currentHour = parseInt(moment().format('H'));
 
-var tasks = {
-    "9": [],
-    "10": [],
-    "11": [],
-    "12": [],
-    "13": [],
-    "14": [],
-    "15": [],
-    "16": [],
-    "17": []
-};
+//get text area class of text
+var textEl = document.getElementsByClassName('text').value;
+var taskEl = document.getElementsByClassName('task-info').value;
 
+
+const tasks = {
+    taskEl: taskEl,
+    textEl: textEl
+}
+
+//variable to set tasks to localStorage
 var setTasks = function() {
+    var key = document.getElementById('key').value;
     //add tasks info to localStorage
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    localStorage.setItem(key, JSON.stringify(tasks));
 }
 
 var getTasks = function() {
     //load the tasks from localStorage and create tasks in the correct row
-
-    var loadedTasks = JSON.parse(localStorage.getItem("tasks"));
+    var loadedTasks = JSON.parse(localStorage.getItem(tasks));
     if (loadedTasks) {
         tasks = loadedTasks;
     }
@@ -68,7 +67,7 @@ timeCheck = function() {
           } else if ((currentHour > rowHour) && (currentHour < rowHour + 6)) {
             setColor(row, "lightgrey");
           } else {
-            setColor(row, "limegreen");
+            setColor(row, "lightgrey");
           }
         }
     });
@@ -84,3 +83,4 @@ function setColor(element, color) {
 
 
 //event handlers
+//click pulls data from textarea and triggers setTasks function
