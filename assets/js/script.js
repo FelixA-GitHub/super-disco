@@ -16,7 +16,24 @@ var tasks = {
     "17": []
 };
 
+var setTasks = function() {
+    //add tasks info to localStorage
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
 
+var getTasks = function() {
+    //load the tasks from localStorage and create tasks in the correct row
+
+    var loadedTasks = JSON.parse(localStorage.getItem("tasks"));
+    if (loadedTasks) {
+        tasks = loadedTasks;
+    }
+
+    // make sure the past/current/future time is reflected
+    timeCheck();
+};
+
+//gets current date and displays it in header area
 getTodayDate = function() {
     //variable to store the date format preference
     let todayFormatEl = moment().format('dddd, MMMM Do');
@@ -34,7 +51,7 @@ getTodayDate();
 
 //function that checks each row and compares row id and current hour
 timeCheck = function() {
-   
+   //each row made into array and for each row we create a string of row id and row hour parsed into an int
     Array.from(rows).forEach(row => {
         let
           rowIdString = row.id,
@@ -65,10 +82,5 @@ function setColor(element, color) {
     element.style.backgroundColor = color;
 }
 
-//function that uses click to trigger even for text within the row
-function rowInput() {
-    
-}
 
 //event handlers
-
