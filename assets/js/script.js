@@ -1,5 +1,9 @@
+var containerEl = document.querySelector('.container');
 var headerDateEl = document.querySelector('.jumbotron');
 var todayEl = document.querySelector('#currentDay');
+const rows = document.getElementsByClassName("row");
+let currentHour = parseInt(moment().format('H'));
+
 var tasks = {
     "9": [],
     "10": [],
@@ -28,10 +32,9 @@ getTodayDate = function() {
 };
 getTodayDate();
 
+//function that checks each row and compares row id and current hour
 timeCheck = function() {
-    const rows = document.getElementsByClassName("row");
-    let currentHour = parseInt(moment().format('H'));
-
+   
     Array.from(rows).forEach(row => {
         let
           rowIdString = row.id,
@@ -62,5 +65,10 @@ function setColor(element, color) {
     element.style.backgroundColor = color;
 }
 
+//function that uses click to trigger even for text within the row
+function rowInput() {
+    
+}
 
-  
+//event handlers
+

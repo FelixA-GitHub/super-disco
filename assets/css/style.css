@@ -34,15 +34,20 @@ textarea{
   white-space: pre-wrap;
   height: 100px;
   margin-bottom: 0.4em;
-  border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 
 .hour {
   background-color: #ffffff;
   color: #000000;
-  border-top: 1px dashed #000000;
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  border-left: 1px solid black;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
   
 }
 
@@ -74,3 +79,12 @@ textarea{
   transition: all .3s ease-in-out;
 }
 
+.task {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+
+textarea {
+  border-left: hidden;
+}
