@@ -77,7 +77,7 @@ $(".saveBtn").on("click", function () {
     var tasksJSON = JSON.stringify(tasks);
 
     for(var i = 0; i < tasksJSON.length; i++) {
-        tasksJSON.length = i;
+        tasksJSON[i];
         i++;
         localStorage.setItem('tasksJSON', tasksJSON);
     }
