@@ -70,43 +70,28 @@ function setColor(element, color) {
 //click pulls data from textarea and stores it to localStorage
 $(".saveBtn").on("click", function () {
     //get nearby values of the task info
-    var text = $(this).siblings(".task-info").val();
+    var text = $(this).siblings(".task-info").val().trim();
     var time = $(this).parent().attr("id");
-    var tasks = {
-        "9": [time, text],
-        "10": [time, text],
-        "11": [time, text],
-        "12": [time, text],
-        "13": [time, text],
-        "14": [time, text],
-        "15": [time, text],
-        "16": [time, text],
-        "17": [time, text]
-    }
+    var tasks = [[time, text],[time, text],[time, text],[time, text],
+    [time, text],[time, text],[time, text],[time, text],[time, text],];
     var tasksJSON = JSON.stringify(tasks);
 
-    localStorage.setItem('tasksJSON', tasksJSON);
-
-    //for each task save time and text in local storage
-    // $.each([time, text], function(time, text){
-    //     localStorage.setItem(time, text);
-    // })
+    for(var i = 0; i < tasksJSON.length; i++) {
+        tasksJSON.length = i;
+        i++;
+        localStorage.setItem('tasksJSON', tasksJSON);
+    }
+    
 });
     
 
 //get values from local storage
 var getTasks = function() {
     //load the tasks info from localStorage
-    $("#9 .task-info").val(localStorage.getItem("9"));
-    $("#10 .task-info").val(localStorage.getItem("10"));
-    $("#11 .task-info").val(localStorage.getItem("11"));
-    $("#12 .task-info").val(localStorage.getItem("12"));
-    $("#13 .task-info").val(localStorage.getItem("13"));
-    $("#14 .task-info").val(localStorage.getItem("14"));
-    $("#15 .task-info").val(localStorage.getItem("15"));
-    $("#16 .task-info").val(localStorage.getItem("16"));
-    $("#17 .task-info").val(localStorage.getItem("17"));
+   var tasksParse = JSON.parse(localStorage.getItem('tasksJSON'));
+    console.log(tasksParse);
 
     // make sure the past/current/future time is reflected
     timeCheck();
 };
+getTasks();
