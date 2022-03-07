@@ -9,7 +9,6 @@ textarea{
   border: none;
   resize: none;
   color: #000000;
-  border-left: 1px solid black;
   padding: 10px;
 }
 
@@ -27,32 +26,26 @@ textarea{
 
 .time-block{
   text-align: center;
-  border-radius: 15px;
+  border: 1px solid black;
 }
 
 .row {
   white-space: pre-wrap;
   height: 100px;
   margin-bottom: 0.4em;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
+  border-top: 1px solid white;
 }
 
 .hour {
   background-color: #ffffff;
   color: #000000;
-  border-top: 1px solid #000000;
-  border-bottom: 1px solid #000000;
-  border-left: 1px solid black;
+  border: 1px solid black;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
-  
 }
 
 .past {
-  background-color: #d3d3d3;
+  background-color: lightgrey;
   color: white;
 }
 
@@ -62,7 +55,7 @@ textarea{
 }
 
 .future {
-  background-color: #77dd77;
+  background-color: limegreen;
   color: white;
 }
 
@@ -79,12 +72,3 @@ textarea{
   transition: all .3s ease-in-out;
 }
 
-.task {
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
-}
-
-textarea {
-  border-left: hidden;
-}
