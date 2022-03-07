@@ -1,26 +1,31 @@
-$(document).ready(function () {
-  //variable to display the date with format preference
-  let todayFormatEl = moment().format('dddd, MMMM Do');
-  $("#currentDay").html(todayFormatEl);
+
+//variable to display the date with format preference
+let todayFormatEl = moment().format('dddd, MMMM Do');
+$("#currentDay").html(todayFormatEl);
+
   
-  
+$(document).ready(function () {  
+
+  //variable to set current hour format
+  let currentHour = moment().hour();
   //function that checks each row and compares row id and current hour
   $(".time-div").each(function () {
-    var timeDiv = parseInt($(this).attr("id").split("-")[1]);
-    //variable to set current hour format
-    let currentHour = moment().format("HH");
+    var timeDiv = $(this).attr("id").split("hour")[1];
     
     if (currentHour == timeDiv) {
-      $(this).addClass("present");
-      $(this).children(".description").addClass("white-text");
+      $(this).removeClass("past");
+      $(this).removeClass("future");
+      $(this).addClass("present");  
     } 
     else if (currentHour < timeDiv) {
-      $(this).removeClass("present");
-      $(this).addClass("future");
-    } 
-    else if (currentHour > timeDiv) {
       $(this).removeClass("future");
+      $(this).removeClass("present");
       $(this).addClass("past");
+    } 
+    else {
+      $(this).removeClass("present");
+      $(this).removeClass("past");
+      $(this).addClass("future");
     }
   });
 
@@ -30,9 +35,9 @@ $(document).ready(function () {
       //get nearby values of the task info
       var text = $(this).siblings(".time-block").val();
       var time = $(this).parent().attr("id").split("-")[1];
-      localStorage.setItem(time, text);
+      localStorage.setItem("myTime", JSON.stringify(time));
+      localStorage.setItem("myText", JSON.stringify(text));
   });
-    
 
   //get values from local storage
   $("#hour09 .time-block").val(localStorage.getItem("09"));

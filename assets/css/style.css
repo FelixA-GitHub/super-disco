@@ -46,16 +46,19 @@ textarea{
 
 .past {
   background-color: lightgrey;
+  border-radius: 15px;
   color: white;
 }
 
 .present {
   background-color: #ff6961;
+  border-radius: 15px;
   color: white;
 }
 
 .future {
   background-color: limegreen;
+  border-radius: 15px;
   color: white;
 }
 
